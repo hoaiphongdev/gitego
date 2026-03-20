@@ -15,3 +15,5 @@ Thumbs.db
 
 # Gemini-specific files
 GEMINI.md
+
+dist/

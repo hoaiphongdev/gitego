@@ -33,6 +33,19 @@ go install github.com/bgreenwell/gitego@latest
 
 *(Note: Ensure your Go bin directory, typically `~/go/bin`, is in your system’s `PATH`.)*
 
+### Build from source (mise + just)
+
+If you clone this repo and want a local binary on your PATH (macOS / Linux):
+
+1. Install [mise](https://mise.jdx.dev/) and [just](https://github.com/casey/just).
+2. From the repo root: `mise install` (pins Go via `mise.toml`).
+3. `just build` — writes cross-compiled binaries under `dist/`.
+4. `just install-local` — symlinks the right `dist/gitego-*` artifact to `~/.local/bin/gitego`.
+
+One-time: add `~/.local/bin` to your PATH (e.g. in `~/.zshrc`: `export PATH="$HOME/.local/bin:$PATH"`). On Windows, copy the matching `dist/gitego-windows-*.exe` to a directory on your PATH instead.
+
+Then continue with **One-time setup: Configure Git** below so Git can invoke `gitego credential`.
+
 ## One-time setup: Configure Git
 
 After installation, you need to tell Git to use `gitego` as its credential helper. This single command makes `gitego` the source of truth for your HTTPS credentials.
